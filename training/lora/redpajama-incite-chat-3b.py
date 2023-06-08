@@ -1,6 +1,5 @@
 import os
 import json
-os.environ["CUDA_VISIBLE_DEVICES"]="0"
 import torch
 import transformers
 import torch.nn as nn
@@ -69,10 +68,9 @@ trainer = transformers.Trainer(
     model=model, 
     train_dataset=data,
     args=transformers.TrainingArguments(
-        per_device_train_batch_size=4, 
+        per_device_train_batch_size=8, 
         gradient_accumulation_steps=4,
         warmup_steps=100, 
-        max_steps=200, 
         learning_rate=2e-4, 
         fp16=True,
         logging_steps=1, 
